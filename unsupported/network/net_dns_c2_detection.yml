@@ -17,8 +17,10 @@ logsource:
     category: dns
 detection:
     selection:
-        parent_domain: '*'
-    condition: selection | count(dns_query) by parent_domain > 1000
+        parent_domain: 'redhunt.net'
+    condition: selection | count(dns_query) by parent_domain > 500
 falsepositives:
     - Valid software, which uses dns for transferring data
 level: high
+tags:
+    - attack.t1071.004 #Applicaiton Layer Protocol: DNS
